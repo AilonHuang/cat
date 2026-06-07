@@ -25,6 +25,7 @@
         "laravel/framework": "^13.0",
         "laravel/octane": "^2.12",
         "laravel/sanctum": "^4.2",
+        "lcobucci/jwt": "^5.6",
         "leandrocfe/filament-apex-charts": "^5.0",
         "psr/simple-cache": "^3.0",
         "pxlrbt/filament-excel": "^3.6",
