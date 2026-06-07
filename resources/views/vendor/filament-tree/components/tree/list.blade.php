@@ -19,6 +19,7 @@
             :containerKey="$containerKey"
             :tree="$tree"
             :title="$title"
+            :description="$this->getTreeRecordDescription($record)"
             :icon="$icon"
         />
     @endforeach

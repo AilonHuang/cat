@@ -1,8 +1,8 @@
 <x-filament-panels::page>
-    <x-filament-panels::form wire:submit="save">
+    <form wire:submit="save">
         {{ $this->form }}
-        <x-filament-panels::form.actions
-            :actions="$this->getFormActions()"
-        />
-    </x-filament-panels::form>
+        <x-filament::button type="submit">
+            {{ __('cat/site.action.save') }}
+        </x-filament::button>
+    </form>
 </x-filament-panels::page>
