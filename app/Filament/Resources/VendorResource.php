@@ -20,6 +20,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class VendorResource extends Resource implements HasShieldPermissions
 {
@@ -125,6 +126,9 @@ class VendorResource extends Resource implements HasShieldPermissions
                     }),
                 // 导出
                 ExportAction::make()
+                    ->exports([
+                        ExcelExport::make()->fromTable(),
+                    ])
                     ->label(__('cat/action.export'))
                     ->visible(function () {
                         return auth()->user()->can('export_vendor');

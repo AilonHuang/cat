@@ -37,6 +37,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class DeviceResource extends Resource implements HasShieldPermissions
 {
@@ -260,6 +261,9 @@ class DeviceResource extends Resource implements HasShieldPermissions
                     ->visible(auth()->user()->can('import_device')),
                 // 导出
                 ExportAction::make()
+                    ->exports([
+                        ExcelExport::make()->fromTable(),
+                    ])
                     ->label(__('cat/action.export'))
                     ->visible(auth()->user()->can('export_device')),
                 // 创建

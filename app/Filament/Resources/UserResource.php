@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use pxlrbt\FilamentExcel\Actions\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class UserResource extends Resource implements HasShieldPermissions
 {
@@ -195,6 +196,9 @@ class UserResource extends Resource implements HasShieldPermissions
                     ->visible(auth()->user()->can('import_user')),
                 // 导出
                 ExportAction::make()
+                    ->exports([
+                        ExcelExport::make()->fromTable(),
+                    ])
                     ->label(__('cat/action.export'))
                     ->visible(auth()->user()->can('export_user')),
                 // 创建

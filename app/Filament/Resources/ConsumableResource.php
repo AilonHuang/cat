@@ -22,6 +22,7 @@ use Filament\Actions\ImportAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use pxlrbt\FilamentExcel\Actions\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 
 class ConsumableResource extends Resource implements HasShieldPermissions
 {
@@ -183,6 +184,9 @@ class ConsumableResource extends Resource implements HasShieldPermissions
                     ->visible(auth()->user()->can('import_consumable')),
                 // 导出
                 ExportAction::make()
+                    ->exports([
+                        ExcelExport::make()->fromTable(),
+                    ])
                     ->label(__('cat/action.export'))
                     ->visible(auth()->user()->can('export_consumable')),
                 // 创建
