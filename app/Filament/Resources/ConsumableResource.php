@@ -21,7 +21,7 @@ use Filament\Tables;
 use Filament\Actions\ImportAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Actions\ExportAction;
 
 class ConsumableResource extends Resource implements HasShieldPermissions
 {
