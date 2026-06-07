@@ -22,7 +22,7 @@ class HasSecret extends ManageRelatedRecords
 
     protected static string $relationship = 'hasSecrets';
 
-    protected static ?string $navigationIcon = 'heroicon-s-server';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-s-server';
 
     protected ?string $heading = ' ';
 

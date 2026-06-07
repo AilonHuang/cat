@@ -11,7 +11,7 @@ use App\Filament\Resources\DeviceCategoryResource\Pages\Index;
 use App\Filament\Resources\DeviceCategoryResource\Pages\View;
 use App\Models\DeviceCategory;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +25,7 @@ class DeviceCategoryResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = DeviceCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -117,9 +117,9 @@ class DeviceCategoryResource extends Resource implements HasShieldPermissions
             ->heading(__('cat/menu.device_category'));
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(DeviceCategoryForm::createOrEdit());
+        return $schema->components(DeviceCategoryForm::createOrEdit());
     }
 
     public static function getPages(): array

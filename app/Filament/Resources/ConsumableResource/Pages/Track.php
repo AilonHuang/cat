@@ -19,7 +19,7 @@ class Track extends ManageRelatedRecords
 
     protected static string $relationship = 'tracks';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected ?string $heading = ' ';
 

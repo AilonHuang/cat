@@ -11,7 +11,7 @@ use App\Filament\Resources\SoftwareCategoryResource\Pages\Software;
 use App\Filament\Resources\SoftwareCategoryResource\Pages\View;
 use App\Models\SoftwareCategory;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +25,7 @@ class SoftwareCategoryResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = SoftwareCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -64,9 +64,9 @@ class SoftwareCategoryResource extends Resource implements HasShieldPermissions
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(SoftwareCategoryForm::createOrEdit());
+        return $schema->components(SoftwareCategoryForm::createOrEdit());
     }
 
     public static function table(Table $table): Table

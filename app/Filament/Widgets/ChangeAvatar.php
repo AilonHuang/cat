@@ -15,7 +15,7 @@ class ChangeAvatar extends Widget implements HasActions, HasForms
     use InteractsWithActions;
     use InteractsWithForms;
 
-    protected static string $view = 'cat.widgets.change-avatar';
+    protected string $view = 'cat.widgets.change-avatar';
 
     protected static ?int $sort = 1;
 

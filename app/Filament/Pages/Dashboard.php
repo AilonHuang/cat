@@ -9,9 +9,9 @@ use Illuminate\Contracts\Support\Htmlable;
 
 class Dashboard extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-s-chart-pie';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-s-chart-pie';
 
-    protected static string $view = 'cat.pages.dashboard';
+    protected string $view = 'cat.pages.dashboard';
 
     protected ?string $heading = '';
 

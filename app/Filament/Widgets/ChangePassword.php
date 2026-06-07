@@ -15,7 +15,7 @@ class ChangePassword extends Widget implements HasActions, HasForms
     use InteractsWithActions;
     use InteractsWithForms;
 
-    protected static string $view = 'cat.widgets.change-password';
+    protected string $view = 'cat.widgets.change-password';
 
     protected static ?int $sort = 1;
 

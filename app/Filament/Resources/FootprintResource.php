@@ -12,7 +12,7 @@ use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\Split;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\TextColumn;
@@ -25,7 +25,7 @@ class FootprintResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Footprint::class;
 
-    protected static ?string $navigationIcon = 'heroicon-m-document-text';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-m-document-text';
 
     protected static ?int $navigationSort = 2;
 
@@ -113,9 +113,9 @@ class FootprintResource extends Resource implements HasShieldPermissions
             ]);
     }
 
-    public static function infolist(Infolist $infolist): Infolist
+    public static function infolist(Schema $schema): Schema
     {
-        return $infolist->schema([
+        return $schema->components([
             Group::make()->schema([
                 Section::make()
                     ->schema([

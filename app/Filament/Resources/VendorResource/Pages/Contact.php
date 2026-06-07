@@ -6,7 +6,7 @@ use App\Filament\Actions\VendorHasContactAction;
 use App\Filament\Forms\VendorHasContactForm;
 use App\Filament\Resources\VendorResource;
 use App\Models\VendorHasContact;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -17,7 +17,7 @@ class Contact extends ManageRelatedRecords
 
     protected static string $relationship = 'contacts';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected ?string $heading = ' ';
 
@@ -31,7 +31,7 @@ class Contact extends ManageRelatedRecords
         return __('cat/menu.vendor_has_contact');
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
         return $form
             ->schema(VendorHasContactForm::createOrEdit());

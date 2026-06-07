@@ -9,7 +9,7 @@ use App\Filament\Resources\AssetNumberRuleResource\Pages\Index;
 use App\Filament\Resources\AssetNumberRuleResource\Pages\View;
 use App\Models\AssetNumberRule;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,7 +23,7 @@ class AssetNumberRuleResource extends Resource implements HasShieldPermissions
 
     protected static ?int $navigationSort = 3;
 
-    protected static ?string $navigationIcon = 'heroicon-o-calculator';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-calculator';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -64,9 +64,9 @@ class AssetNumberRuleResource extends Resource implements HasShieldPermissions
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(AssetNumberRuleForm::createOrEdit());
+        return $schema->components(AssetNumberRuleForm::createOrEdit());
     }
 
     public static function table(Table $table): Table

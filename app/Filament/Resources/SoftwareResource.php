@@ -15,7 +15,7 @@ use App\Services\BrandService;
 use App\Services\SoftwareCategoryService;
 use App\Services\SoftwareService;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Infolists\Components\Grid;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\ImageEntry;
@@ -23,7 +23,6 @@ use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\Split;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -38,7 +37,7 @@ class SoftwareResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Software::class;
 
-    protected static ?string $navigationIcon = 'heroicon-m-squares-plus';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-m-squares-plus';
 
     protected static ?string $slug = 'software';
 
@@ -249,14 +248,14 @@ class SoftwareResource extends Resource implements HasShieldPermissions
             ->heading(__('cat/menu.software'));
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(SoftwareForm::createOrEdit());
+        return $schema->components(SoftwareForm::createOrEdit());
     }
 
-    public static function infolist(Infolist $infolist): Infolist
+    public static function infolist(Schema $schema): Schema
     {
-        return $infolist->schema([
+        return $schema->components([
             Group::make()->schema([
                 Section::make()
                     ->schema([

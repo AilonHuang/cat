@@ -11,7 +11,7 @@ use App\Filament\Resources\ConsumableCategoryResource\Pages\Index;
 use App\Filament\Resources\ConsumableCategoryResource\Pages\View;
 use App\Models\ConsumableCategory;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +25,7 @@ class ConsumableCategoryResource extends Resource implements HasShieldPermission
 {
     protected static ?string $model = ConsumableCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -64,7 +64,7 @@ class ConsumableCategoryResource extends Resource implements HasShieldPermission
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
         return $form
             ->schema(ConsumableCategoryForm::createOrEdit());

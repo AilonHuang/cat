@@ -15,7 +15,7 @@ class Device extends ManageRelatedRecords
 
     protected static string $relationship = 'devices';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected ?string $heading = ' ';
 

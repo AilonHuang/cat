@@ -10,7 +10,7 @@ use App\Filament\Resources\BrandResource\Pages\Index;
 use App\Filament\Resources\BrandResource\Pages\View;
 use App\Models\Brand;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,7 +24,7 @@ class BrandResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Brand::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-tag';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-s-tag';
 
     protected static ?int $navigationSort = 1;
 
@@ -70,9 +70,9 @@ class BrandResource extends Resource implements HasShieldPermissions
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(BrandForm::createOrEdit());
+        return $schema->components(BrandForm::createOrEdit());
     }
 
     public static function table(Table $table): Table

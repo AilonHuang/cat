@@ -23,7 +23,7 @@ class HasUser extends ManageRelatedRecords
 
     protected static string $relationship = 'hasUsers';
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-user';
 
     protected ?string $heading = ' ';
 

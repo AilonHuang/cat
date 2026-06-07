@@ -8,7 +8,7 @@ use Filament\Pages\Page;
 
 class Profile extends Page
 {
-    protected static string $view = 'cat.pages.profile';
+    protected string $view = 'cat.pages.profile';
 
     protected static bool $shouldRegisterNavigation = false;
 

@@ -17,13 +17,13 @@ class Tree extends BasePage
 
     protected static int $maxDepth = 5;
 
-    protected static ?string $navigationIcon = 'heroicon-m-arrow-uturn-left';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-m-arrow-uturn-left';
 
     /**
      * 重写方法为了让 Tree 可以正确显示 URL
      * 在 sub_navigation 模式下
      */
-    public static function getUrl(array $parameters = [], bool $isAbsolute = true, ?string $panel = null, ?Model $tenant = null): string
+    public static function getUrl(array $parameters = [], bool $isAbsolute = true, ?string $panel = null, ?Model $tenant = null, bool $shouldGuessMissingParameters = false, ?string $configuration = null): string
     {
         return '/organizations';
     }

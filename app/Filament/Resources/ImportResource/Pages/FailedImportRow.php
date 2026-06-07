@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\ImportResource\Pages;
 
 use App\Filament\Resources\ImportResource;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -14,7 +14,7 @@ class FailedImportRow extends ManageRelatedRecords
 
     protected static string $relationship = 'failedImportRows';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected ?string $heading = ' ';
 
@@ -28,7 +28,7 @@ class FailedImportRow extends ManageRelatedRecords
         return __('cat/menu.failed_import_row');
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
         return $form
             ->schema([

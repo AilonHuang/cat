@@ -22,7 +22,7 @@ class Ticket extends ManageRelatedRecords
 
     protected static string $relationship = 'tickets';
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
     protected ?string $heading = ' ';
 

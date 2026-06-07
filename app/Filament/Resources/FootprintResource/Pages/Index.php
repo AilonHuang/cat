@@ -9,7 +9,7 @@ class Index extends ListRecords
 {
     protected static string $resource = FootprintResource::class;
 
-    protected static ?string $navigationIcon = 'heroicon-m-arrow-uturn-left';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-m-arrow-uturn-left';
 
     protected ?string $heading = ' ';
 

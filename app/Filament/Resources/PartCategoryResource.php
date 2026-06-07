@@ -11,7 +11,7 @@ use App\Filament\Resources\PartCategoryResource\Pages\Part;
 use App\Filament\Resources\PartCategoryResource\Pages\View;
 use App\Models\PartCategory;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +25,7 @@ class PartCategoryResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = PartCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -64,9 +64,9 @@ class PartCategoryResource extends Resource implements HasShieldPermissions
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(PartCategoryForm::createOrEdit());
+        return $schema->components(PartCategoryForm::createOrEdit());
     }
 
     public static function table(Table $table): Table

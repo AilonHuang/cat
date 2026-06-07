@@ -11,7 +11,7 @@ use App\Filament\Resources\VendorResource\Pages\Index;
 use App\Filament\Resources\VendorResource\Pages\View;
 use App\Models\Vendor;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +25,7 @@ class VendorResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Vendor::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-building-storefront';
 
     protected static ?int $navigationSort = 2;
 
@@ -74,9 +74,9 @@ class VendorResource extends Resource implements HasShieldPermissions
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(VendorForm::createOrEdit());
+        return $schema->components(VendorForm::createOrEdit());
     }
 
     public static function table(Table $table): Table

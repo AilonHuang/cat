@@ -22,7 +22,7 @@ class HasSoftware extends ManageRelatedRecords
 
     protected static string $relationship = 'hasSoftware';
 
-    protected static ?string $navigationIcon = 'heroicon-m-squares-plus';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-m-squares-plus';
 
     protected ?string $heading = ' ';
 

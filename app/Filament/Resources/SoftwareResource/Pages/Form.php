@@ -21,7 +21,7 @@ class Form extends ManageRelatedRecords
 
     protected static string $relationship = 'forms';
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
     protected ?string $heading = ' ';
 

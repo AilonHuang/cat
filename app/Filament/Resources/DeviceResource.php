@@ -21,7 +21,7 @@ use App\Services\DeviceCategoryService;
 use App\Services\DeviceService;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Exception;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Infolists\Components\Grid;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\ImageEntry;
@@ -29,7 +29,6 @@ use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\Split;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -44,7 +43,7 @@ class DeviceResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Device::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-server';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-s-server';
 
     protected static ?int $navigationSort = 1;
 
@@ -295,14 +294,14 @@ class DeviceResource extends Resource implements HasShieldPermissions
             ->heading(__('cat/menu.device'));
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(DeviceForm::createOrEdit());
+        return $schema->components(DeviceForm::createOrEdit());
     }
 
-    public static function infolist(Infolist $infolist): Infolist
+    public static function infolist(Schema $schema): Schema
     {
-        return $infolist->schema([
+        return $schema->components([
             Group::make()->schema([
                 Section::make()
                     ->schema([

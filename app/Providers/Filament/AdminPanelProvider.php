@@ -10,8 +10,6 @@ use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Hasnayeen\Themes\Http\Middleware\SetTheme;
-use Hasnayeen\Themes\ThemesPlugin;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -61,7 +59,6 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                SetTheme::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
@@ -69,7 +66,6 @@ class AdminPanelProvider extends PanelProvider
             ->breadcrumbs(true)
             ->plugins([
                 FilamentShieldPlugin::make(),
-                ThemesPlugin::make(),
                 FilamentBackgroundsPlugin::make(),
                 FilamentApexChartsPlugin::make(),
             ])
@@ -85,7 +81,7 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-m-identification'),
                 MenuItem::make()
                     ->label(__('cat/menu.github'))
-                    ->url('https://github.com/celaraze/cat')
+                    ->url('https://github.com/AilonHuang/cat')
                     ->openUrlInNewTab()
                     ->icon('heroicon-s-star'),
                 MenuItem::make()

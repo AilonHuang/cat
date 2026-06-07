@@ -1,26 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
+use BezhanSalleh\FilamentShield\Resources\Roles\RoleResource;
+
 return [
     'shield_resource' => [
-        'should_register_navigation' => ! env('DEMO_MODE', true),
         'slug' => 'roles',
-        'navigation_sort' => -1,
-        'navigation_badge' => true,
-        'navigation_group' => true,
-        'is_globally_searchable' => true,
         'show_model_path' => false,
-        'is_scoped_to_tenant' => true,
+        'cluster' => null,
+        'tabs' => [
+            'pages' => false,
+            'widgets' => false,
+            'resources' => true,
+            'custom_permissions' => false,
+        ],
     ],
 
-    'auth_provider_model' => [
-        'fqcn' => 'App\\Models\\User',
-    ],
+    'tenant_model' => null,
+
+    'auth_provider_model' => App\Models\User::class,
 
     'super_admin' => [
         'enabled' => true,
         'name' => '超级管理员',
         'define_via_gate' => false,
-        'intercept_gate' => 'before', // after
+        'intercept_gate' => 'before',
     ],
 
     'panel_user' => [
@@ -28,52 +33,72 @@ return [
         'name' => 'panel_user',
     ],
 
-    'permission_prefixes' => [
-        'resource' => [
+    'permissions' => [
+        'separator' => ':',
+        'case' => 'pascal',
+        'generate' => true,
+    ],
+
+    'policies' => [
+        'path' => app_path('Policies'),
+        'merge' => true,
+        'generate' => true,
+        'methods' => [
+            'viewAny',
             'view',
-            'view_any',
             'create',
             'update',
+            'delete',
+            'deleteAny',
             'restore',
-            'restore_any',
+            'forceDelete',
+            'forceDeleteAny',
+            'restoreAny',
             'replicate',
             'reorder',
-            'delete',
-            'delete_any',
-            'force_delete',
-            'force_delete_any',
         ],
-
-        'page' => 'page',
-        'widget' => 'widget',
-    ],
-
-    'entities' => [
-        'pages' => false,
-        'widgets' => false,
-        'resources' => true,
-        'custom_permissions' => false,
-    ],
-
-    'generator' => [
-        'option' => 'policies_and_permissions',
-    ],
-
-    'exclude' => [
-        'enabled' => true,
-
-        'pages' => [
-
-        ],
-
-        'widgets' => [
-
-        ],
-
-        'resources' => [
-
+        'single_parameter_methods' => [
+            'viewAny',
+            'create',
+            'deleteAny',
+            'forceDeleteAny',
+            'restoreAny',
+            'reorder',
         ],
     ],
+
+    'localization' => [
+        'enabled' => false,
+        'key' => 'filament-shield::filament-shield.resource_permission_prefixes_labels',
+    ],
+
+    'resources' => [
+        'subject' => 'model',
+        'manage' => [
+            RoleResource::class => [
+                'viewAny',
+                'view',
+                'create',
+                'update',
+                'delete',
+            ],
+        ],
+        'exclude' => [],
+    ],
+
+    'pages' => [
+        'subject' => 'class',
+        'prefix' => 'view',
+        'exclude' => [],
+    ],
+
+    'widgets' => [
+        'subject' => 'class',
+        'prefix' => 'view',
+        'exclude' => [],
+    ],
+
+    'custom_permissions' => [],
 
     'discovery' => [
         'discover_all_resources' => false,
@@ -81,8 +106,5 @@ return [
         'discover_all_pages' => false,
     ],
 
-    'register_role_policy' => [
-        'enabled' => true,
-    ],
-
+    'register_role_policy' => true,
 ];

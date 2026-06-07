@@ -9,7 +9,7 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Pages\Page;
 use Filament\Support\Exceptions\Halt;
 
@@ -17,9 +17,9 @@ class Site extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static ?string $navigationIcon = 'heroicon-m-globe-asia-australia';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-m-globe-asia-australia';
 
-    protected static string $view = 'cat.pages.site';
+    protected string $view = 'cat.pages.site';
 
     // todo 暂时隐藏
     protected static bool $shouldRegisterNavigation = false;
@@ -52,9 +52,9 @@ class Site extends Page implements HasForms
         $this->form->fill(Setting::query()->pluck('custom_value', 'custom_key')->toArray());
     }
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             TextInput::make('app_url')
                 ->hint(__('cat/site.app_url_helper'))
                 ->rules(['url'])

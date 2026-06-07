@@ -22,7 +22,7 @@ class HasPart extends ManageRelatedRecords
 
     protected static string $relationship = 'hasParts';
 
-    protected static ?string $navigationIcon = 'heroicon-m-cpu-chip';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-m-cpu-chip';
 
     protected ?string $heading = ' ';
 

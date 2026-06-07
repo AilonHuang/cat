@@ -12,7 +12,7 @@ use App\Filament\Resources\SecretResource\Pages\View;
 use App\Models\Device;
 use App\Models\Secret;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,7 +23,7 @@ class SecretResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Secret::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?int $navigationSort = 5;
 
@@ -82,7 +82,7 @@ class SecretResource extends Resource implements HasShieldPermissions
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
         return $form
             ->schema(SecretForm::createOrEdit());

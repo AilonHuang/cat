@@ -10,7 +10,7 @@ use App\Filament\Resources\UserResource\Pages\Index;
 use App\Filament\Resources\UserResource\Pages\View;
 use App\Models\User;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +25,7 @@ class UserResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-user-circle';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-s-user-circle';
 
     protected static ?int $navigationSort = 1;
 
@@ -101,9 +101,9 @@ class UserResource extends Resource implements HasShieldPermissions
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(UserForm::edit());
+        return $schema->components(UserForm::edit());
     }
 
     public static function table(Table $table): Table

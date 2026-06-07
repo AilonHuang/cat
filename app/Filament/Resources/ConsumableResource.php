@@ -14,7 +14,7 @@ use App\Models\Consumable;
 use App\Models\Device;
 use App\Services\ConsumableService;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -27,7 +27,7 @@ class ConsumableResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Consumable::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-beaker';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-beaker';
 
     protected static ?int $navigationSort = 4;
 
@@ -93,7 +93,7 @@ class ConsumableResource extends Resource implements HasShieldPermissions
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
         return $form
             ->schema(ConsumableForm::createOrEdit());

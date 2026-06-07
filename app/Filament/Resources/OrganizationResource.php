@@ -9,13 +9,12 @@ use App\Filament\Resources\OrganizationResource\Pages\Tree;
 use App\Filament\Resources\OrganizationResource\Pages\View;
 use App\Models\Organization;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 use Filament\Infolists\Components\Grid;
 use Filament\Infolists\Components\Group;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\Split;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,7 +24,7 @@ class OrganizationResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Organization::class;
 
-    protected static ?string $navigationIcon = 'heroicon-m-user-group';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-m-user-group';
 
     protected static ?int $navigationSort = 2;
 
@@ -80,14 +79,14 @@ class OrganizationResource extends Resource implements HasShieldPermissions
         ];
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema(OrganizationForm::createOrEdit());
+        return $schema->components(OrganizationForm::createOrEdit());
     }
 
-    public static function infolist(Infolist $infolist): Infolist
+    public static function infolist(Schema $schema): Schema
     {
-        return $infolist->schema([
+        return $schema->components([
             Group::make()->schema([
                 Section::make()
                     ->schema([
