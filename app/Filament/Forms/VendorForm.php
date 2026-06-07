@@ -35,10 +35,10 @@ class VendorForm
     public static function delete(): array
     {
         return [
-            Shout::make('hint')
+            Shout::make('delete_has_contacts_hint')
                 ->color('danger')
                 ->content(__('cat/vendor.form.delete_helper_1')),
-            Shout::make('hint')
+            Shout::make('delete_has_devices_hint')
                 ->color('danger')
                 ->content(__('cat/vendor.form.delete_helper_2')),
         ];

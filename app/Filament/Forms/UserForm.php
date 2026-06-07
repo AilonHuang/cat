@@ -36,7 +36,7 @@ class UserForm
                 ->options(RoleService::pluckOptions())
                 ->searchable()
                 ->preload(),
-            Shout::make('')
+            Shout::make('create_helper_hint')
                 ->color('warning')
                 ->content(__('cat/user.form.create_helper')),
         ];
@@ -116,24 +116,24 @@ class UserForm
     public static function delete(array $bool): array
     {
         return [
-            Shout::make('')
+            Shout::make('delete_intro_hint')
                 ->color('primary')
                 ->content(__('cat/user.form.delete_helper_1')),
-            Shout::make('')
+            Shout::make('delete_device_user_hint')
                 ->color('warning')
                 ->content(function () use ($bool) {
                     $icon = $bool['device_has_users'] ? '✔' : '✖';
 
                     return $icon.__('cat/user.form.delete_helper_2');
                 }),
-            Shout::make('')
+            Shout::make('delete_applicant_forms_hint')
                 ->color('warning')
                 ->content(function () use ($bool) {
                     $icon = $bool['applicant_forms'] ? '✔' : '✖';
 
                     return $icon.__('cat/user.form.delete_helper_3');
                 }),
-            Shout::make('')
+            Shout::make('delete_approve_forms_hint')
                 ->color('warning')
                 ->content(function () use ($bool) {
                     $icon = $bool['approve_forms'] ? '✔' : '✖';
@@ -149,7 +149,7 @@ class UserForm
     public static function resetPassword(): array
     {
         return [
-            Shout::make('')
+            Shout::make('reset_password_hint')
                 ->color('warning')
                 ->content(__('cat/user.form.reset_password_helper')),
         ];

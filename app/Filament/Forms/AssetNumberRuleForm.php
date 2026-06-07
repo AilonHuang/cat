@@ -27,7 +27,7 @@ class AssetNumberRuleForm
                 ->label(__('cat/asset_number_rule.auto_increment_length'))
                 ->numeric()
                 ->required(),
-            Shout::make('')
+            Shout::make('create_helper_hint')
                 ->content(__('cat/asset_number_rule.form.create_helper')),
         ];
     }

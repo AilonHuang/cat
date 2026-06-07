@@ -108,7 +108,7 @@ class SoftwareForm
                 ->default('retire_flow'),
             Hidden::make('model_name')
                 ->default(Software::class),
-            Shout::make('')
+            Shout::make('set_retire_flow_hint')
                 ->color('info')
                 ->content(__('cat/software.form.set_retire_flow_helper')),
             Repeater::make('nodes')
@@ -156,7 +156,7 @@ class SoftwareForm
                 ->default(auth()->id()),
             Hidden::make('creator_id')
                 ->default(auth()->id()),
-            Shout::make('')
+            Shout::make('retire_hint')
                 ->color('danger')
                 ->content(__('cat/software.form.retire_helper')),
             TextInput::make('comment')

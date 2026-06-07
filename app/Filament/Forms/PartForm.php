@@ -100,7 +100,7 @@ class PartForm
                 ->default('retire_flow'),
             Hidden::make('model_name')
                 ->default(Part::class),
-            Shout::make('')
+            Shout::make('set_retire_flow_hint')
                 ->color('info')
                 ->content(__('cat/part.form.set_retire_flow_helper')),
             Repeater::make('nodes')

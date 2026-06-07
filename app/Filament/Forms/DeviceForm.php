@@ -97,7 +97,7 @@ class DeviceForm
     public static function forceRetire(): array
     {
         return [
-            Shout::make('hint')
+            Shout::make('force_retire_hint')
                 ->color('danger')
                 ->content(__('cat/device.form.force_retire_helper')),
         ];
@@ -117,7 +117,7 @@ class DeviceForm
                 ->default('retire_flow'),
             Hidden::make('model_name')
                 ->default(Device::class),
-            Shout::make('')
+            Shout::make('set_retire_flow_hint')
                 ->color('info')
                 ->content(__('cat/device.form.set_retire_flow_helper')),
             Repeater::make('nodes')
@@ -165,7 +165,7 @@ class DeviceForm
                 ->default(auth()->id()),
             Hidden::make('creator_id')
                 ->default(auth()->id()),
-            Shout::make('')
+            Shout::make('retire_hint')
                 ->color('danger')
                 ->content(__('cat/device.form.retire_helper')),
             TextInput::make('comment')

@@ -40,7 +40,7 @@ class UserImporter extends Importer
     public static function getOptionsFormComponents(): array
     {
         return [
-            Shout::make('')
+            Shout::make('import_helper_hint')
                 ->color('warning')
                 ->content(__('cat/user.importer.import_helper')),
         ];

@@ -85,7 +85,7 @@ class ConsumableForm
     public static function forceRetire(): array
     {
         return [
-            Shout::make('hint')
+            Shout::make('force_retire_hint')
                 ->color('danger')
                 ->content(__('cat/consumable.form.force_retire_helper')),
         ];
@@ -105,7 +105,7 @@ class ConsumableForm
                 ->default('retire_flow'),
             Hidden::make('model_name')
                 ->default(Consumable::class),
-            Shout::make('')
+            Shout::make('set_retire_flow_hint')
                 ->color('info')
                 ->content(__('cat/consumable.form.set_retire_flow_helper')),
             Repeater::make('nodes')
@@ -136,7 +136,7 @@ class ConsumableForm
                 ->default(auth()->id()),
             Hidden::make('creator_id')
                 ->default(auth()->id()),
-            Shout::make('')
+            Shout::make('retire_hint')
                 ->color('danger')
                 ->content(__('cat/consumable.form.retire_helper')),
             TextInput::make('comment')

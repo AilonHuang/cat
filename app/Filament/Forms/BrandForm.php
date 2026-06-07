@@ -28,7 +28,7 @@ class BrandForm
     public static function delete(): array
     {
         return [
-            Shout::make('hint')
+            Shout::make('delete_helper_hint')
                 ->color('danger')
                 ->content(__('cat/brand.form.delete_helper')),
         ];
