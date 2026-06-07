@@ -18,7 +18,7 @@ use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\ImportAction;
+use Filament\Actions\ImportAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
@@ -95,7 +95,7 @@ class ConsumableResource extends Resource implements HasShieldPermissions
 
     public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema(ConsumableForm::createOrEdit());
     }
 
@@ -148,7 +148,7 @@ class ConsumableResource extends Resource implements HasShieldPermissions
 
             ])
             ->actions([
-                Tables\Actions\ActionGroup::make([
+                \Filament\Actions\ActionGroup::make([
                     // 流程报废
                     ConsumableAction::retire()
                         ->visible(function (Consumable $consumable) {
@@ -190,7 +190,7 @@ class ConsumableResource extends Resource implements HasShieldPermissions
                     ->visible(function () {
                         return auth()->user()->can('create_consumable');
                     }),
-                Tables\Actions\ActionGroup::make([
+                \Filament\Actions\ActionGroup::make([
                     // 前往分类
                     ConsumableAction::toCategory(),
                     ConsumableAction::toUnit(),

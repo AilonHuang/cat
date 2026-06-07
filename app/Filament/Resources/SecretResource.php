@@ -84,7 +84,7 @@ class SecretResource extends Resource implements HasShieldPermissions
 
     public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema(SecretForm::createOrEdit());
     }
 

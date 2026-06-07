@@ -10,10 +10,9 @@ use App\Filament\Resources\OrganizationResource\Pages\View;
 use App\Models\Organization;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Schemas\Schema;
-use Filament\Infolists\Components\Grid;
-use Filament\Infolists\Components\Group;
-use Filament\Infolists\Components\Section;
-use Filament\Infolists\Components\Split;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
@@ -90,15 +89,13 @@ class OrganizationResource extends Resource implements HasShieldPermissions
             Group::make()->schema([
                 Section::make()
                     ->schema([
-                        Split::make([
-                            Grid::make()
+                        Grid::make()
                                 ->schema([
                                     Group::make([
                                         TextEntry::make('name')
                                             ->label(__('cat/organization.name')),
                                     ]),
                                 ]),
-                        ]),
                     ]),
             ])->columnSpan(['lg' => 3]),
         ])->columns(3);

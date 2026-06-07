@@ -7,7 +7,7 @@ use App\Services\AssetNumberRuleService;
 use App\Services\DeviceService;
 use App\Services\RoleService;
 use Awcodes\Shout\Components\Shout;
-use Filament\Forms\Components\Actions\Action;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;

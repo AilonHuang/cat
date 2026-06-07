@@ -10,15 +10,14 @@ use App\Filament\Resources\TicketResource\Pages\View;
 use App\Models\Ticket;
 use App\Services\TicketCategoryService;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Infolists\Components\Grid;
-use Filament\Infolists\Components\Group;
-use Filament\Infolists\Components\Section;
-use Filament\Infolists\Components\Split;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\ActionGroup;
+use Filament\Actions\ActionGroup;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -190,8 +189,7 @@ class TicketResource extends Resource implements HasShieldPermissions
             Group::make()->schema([
                 Section::make()
                     ->schema([
-                        Split::make([
-                            Grid::make()
+                        Grid::make()
                                 ->schema([
                                     Group::make([
                                         TextEntry::make('category.name')
@@ -215,7 +213,6 @@ class TicketResource extends Resource implements HasShieldPermissions
                                             }),
                                     ]),
                                 ]),
-                        ]),
                     ]),
             ]),
         ]);

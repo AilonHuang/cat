@@ -7,10 +7,9 @@ use App\Filament\Resources\ImportResource\Pages\Index;
 use App\Filament\Resources\ImportResource\Pages\View;
 use App\Models\Import;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Infolists\Components\Grid;
-use Filament\Infolists\Components\Group;
-use Filament\Infolists\Components\Section;
-use Filament\Infolists\Components\Split;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
@@ -105,8 +104,7 @@ class ImportResource extends Resource implements HasShieldPermissions
             Group::make()->schema([
                 Section::make()
                     ->schema([
-                        Split::make([
-                            Grid::make()
+                        Grid::make()
                                 ->schema([
                                     Group::make([
                                         TextEntry::make('completed_at')
@@ -131,7 +129,6 @@ class ImportResource extends Resource implements HasShieldPermissions
                                             ->label(__('cat/import.successful_rows')),
                                     ]),
                                 ]),
-                        ]),
                     ]),
             ])->columnSpan(['lg' => 3]),
         ])->columns(3);

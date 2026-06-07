@@ -9,7 +9,7 @@ use App\Services\TicketService;
 use App\Utils\LogUtil;
 use App\Utils\NotificationUtil;
 use Exception;
-use Filament\Tables\Actions\Action;
+use Filament\Actions\Action;
 
 class TicketAction
 {
@@ -42,10 +42,10 @@ class TicketAction
             ->url('/ticket-categories');
     }
 
-    public static function finish(): \Filament\Infolists\Components\Actions\Action
+    public static function finish(): \Filament\Actions\Action
     {
         /* @var Ticket $ticket */
-        return \Filament\Infolists\Components\Actions\Action::make(__('cat/ticket.action.finish'))
+        return \Filament\Actions\Action::make(__('cat/ticket.action.finish'))
             ->slideOver()
             ->color('success')
             ->icon('heroicon-o-check-circle')

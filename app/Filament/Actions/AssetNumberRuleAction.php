@@ -6,7 +6,7 @@ use App\Filament\Forms\AssetNumberRuleForm;
 use App\Services\AssetNumberRuleService;
 use App\Utils\NotificationUtil;
 use Exception;
-use Filament\Tables\Actions\Action;
+use Filament\Actions\Action;
 use Illuminate\Support\Facades\Log;
 
 class AssetNumberRuleAction

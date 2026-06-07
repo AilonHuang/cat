@@ -30,7 +30,7 @@ class FailedImportRow extends ManageRelatedRecords
 
     public function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
 
             ]);

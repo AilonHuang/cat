@@ -5,7 +5,7 @@ namespace App\Filament\Resources\TicketResource\Pages;
 use App\Enums\TicketEnum;
 use App\Filament\Resources\TicketResource;
 use App\Models\Ticket;
-use Filament\Resources\Components\Tab;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Support\Colors\Color;
 use Illuminate\Database\Eloquent\Builder;

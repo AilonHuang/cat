@@ -9,10 +9,9 @@ use App\Filament\Resources\InventoryResource\Pages\Index;
 use App\Filament\Resources\InventoryResource\Pages\View;
 use App\Models\Inventory;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Infolists\Components\Grid;
-use Filament\Infolists\Components\Group;
-use Filament\Infolists\Components\Section;
-use Filament\Infolists\Components\Split;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 use Filament\Resources\Pages\Page;
@@ -123,8 +122,7 @@ class InventoryResource extends Resource implements HasShieldPermissions
             Group::make()->schema([
                 Section::make()
                     ->schema([
-                        Split::make([
-                            Grid::make()
+                        Grid::make()
                                 ->schema([
                                     Group::make([
                                         TextEntry::make('name')
@@ -138,7 +136,6 @@ class InventoryResource extends Resource implements HasShieldPermissions
                                             ->label(__('cat/inventory.class_name')),
                                     ]),
                                 ]),
-                        ]),
                     ]),
             ])->columnSpan(['lg' => 2]),
             Group::make()->schema([

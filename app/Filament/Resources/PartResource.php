@@ -16,17 +16,16 @@ use App\Services\PartCategoryService;
 use App\Services\PartService;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Schemas\Schema;
-use Filament\Infolists\Components\Grid;
-use Filament\Infolists\Components\Group;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Group;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\RepeatableEntry;
-use Filament\Infolists\Components\Section;
-use Filament\Infolists\Components\Split;
+use Filament\Schemas\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\ImportAction;
+use Filament\Actions\ImportAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -168,7 +167,7 @@ class PartResource extends Resource implements HasShieldPermissions
                     ->label(__('cat/part.status')),
             ])
             ->actions([
-                Tables\Actions\ActionGroup::make([
+                \Filament\Actions\ActionGroup::make([
                     // 流程报废
                     PartAction::retire()
                         ->visible(function (Part $part) {
@@ -213,7 +212,7 @@ class PartResource extends Resource implements HasShieldPermissions
                 PartAction::create()->visible(function () {
                     return auth()->user()->can('create_part');
                 }),
-                Tables\Actions\ActionGroup::make([
+                \Filament\Actions\ActionGroup::make([
                     // 前往配件分类
                     PartAction::toCategory(),
                     // 配置资产编号自动生成
@@ -250,8 +249,7 @@ class PartResource extends Resource implements HasShieldPermissions
             Group::make()->schema([
                 Section::make()
                     ->schema([
-                        Split::make([
-                            Grid::make()
+                        Grid::make()
                                 ->schema([
                                     Group::make([
                                         TextEntry::make('asset_number')
@@ -270,7 +268,6 @@ class PartResource extends Resource implements HasShieldPermissions
                                             ->label(__('cat/part.specification')),
                                     ]),
                                 ]),
-                        ]),
                     ]),
                 Section::make()->schema([
                     TextEntry::make('description')

@@ -10,7 +10,7 @@ use App\Models\DeviceHasUser;
 use App\Traits\ManageRelatedRecords\QueryRecordByUrl;
 use Filament\Resources\Pages\ManageRelatedRecords;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn\TextColumnSize;
+use Filament\Support\Enums\TextSize;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -75,17 +75,17 @@ class HasUser extends ManageRelatedRecords
                 Tables\Columns\TextColumn::make('expired_at')
                     ->searchable()
                     ->toggleable()
-                    ->size(TextColumnSize::ExtraSmall)
+                    ->size(TextSize::ExtraSmall)
                     ->label(__('cat/device_has_user.expired_at')),
                 Tables\Columns\TextColumn::make('created_at')
                     ->searchable()
                     ->toggleable()
-                    ->size(TextColumnSize::ExtraSmall)
+                    ->size(TextSize::ExtraSmall)
                     ->label(__('cat/device_has_user.created_at')),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->searchable()
                     ->toggleable()
-                    ->size(TextColumnSize::ExtraSmall)
+                    ->size(TextSize::ExtraSmall)
                     ->label(__('cat/device_has_user.deleted_at')),
                 Tables\Columns\TextColumn::make('creator.name')
                     ->searchable()

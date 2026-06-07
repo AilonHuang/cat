@@ -10,8 +10,8 @@ use App\Services\DeviceHasSecretService;
 use App\Utils\LogUtil;
 use App\Utils\NotificationUtil;
 use Exception;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Actions\BulkAction;
+use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
 use Illuminate\Database\Eloquent\Collection;
 
 class DeviceHasSecretAction

@@ -9,7 +9,7 @@ use App\Services\InventoryService;
 use App\Utils\LogUtil;
 use App\Utils\NotificationUtil;
 use Exception;
-use Filament\Tables\Actions\Action;
+use Filament\Actions\Action;
 
 class InventoryAction
 {

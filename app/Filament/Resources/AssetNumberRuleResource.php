@@ -87,7 +87,7 @@ class AssetNumberRuleResource extends Resource implements HasShieldPermissions
             ])
             ->actions([
                 // 删除
-                Tables\Actions\DeleteAction::make()
+                \Filament\Actions\DeleteAction::make()
                     ->slideOver()
                     ->closeModalByClickingAway(false)
                     ->visible(function () {

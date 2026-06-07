@@ -5,7 +5,7 @@ namespace App\Filament\Resources\PartResource\Pages;
 use App\Enums\AssetEnum;
 use App\Filament\Resources\PartResource;
 use App\Models\Part;
-use Filament\Resources\Components\Tab;
+use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 

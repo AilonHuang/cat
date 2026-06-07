@@ -14,7 +14,7 @@ use App\Services\FlowService;
 use App\Utils\LogUtil;
 use App\Utils\NotificationUtil;
 use Exception;
-use Filament\Tables\Actions\Action;
+use Filament\Actions\Action;
 
 class ConsumableAction
 {

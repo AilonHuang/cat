@@ -33,7 +33,7 @@ class Contact extends ManageRelatedRecords
 
     public function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema(VendorHasContactForm::createOrEdit());
     }
 
@@ -67,7 +67,7 @@ class Contact extends ManageRelatedRecords
             ])
             ->actions([
                 // 编辑
-                Tables\Actions\EditAction::make()
+                \Filament\Actions\EditAction::make()
                     ->visible(function (VendorHasContact $vendor_has_contact) {
                         $is_deleted = $vendor_has_contact->service()->isDeleted();
 

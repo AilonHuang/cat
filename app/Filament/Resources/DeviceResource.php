@@ -22,17 +22,16 @@ use App\Services\DeviceService;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Exception;
 use Filament\Schemas\Schema;
-use Filament\Infolists\Components\Grid;
-use Filament\Infolists\Components\Group;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Group;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\RepeatableEntry;
-use Filament\Infolists\Components\Section;
-use Filament\Infolists\Components\Split;
+use Filament\Schemas\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\ImportAction;
+use Filament\Actions\ImportAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -216,7 +215,7 @@ class DeviceResource extends Resource implements HasShieldPermissions
 
                         return $can && ! $is_retired && ! $device->hasUsers()->count();
                     }),
-                Tables\Actions\ActionGroup::make([
+                \Filament\Actions\ActionGroup::make([
                     // 解除用户
                     DeviceHasUserAction::delete()
                         ->visible(function (Device $device) {
@@ -268,7 +267,7 @@ class DeviceResource extends Resource implements HasShieldPermissions
                     ->visible(function () {
                         return auth()->user()->can('create_device');
                     }),
-                Tables\Actions\ActionGroup::make([
+                \Filament\Actions\ActionGroup::make([
                     // 前往分类
                     DeviceAction::toCategory(),
                     // 配置资产编号自动生成规则
@@ -305,8 +304,7 @@ class DeviceResource extends Resource implements HasShieldPermissions
             Group::make()->schema([
                 Section::make()
                     ->schema([
-                        Split::make([
-                            Grid::make()
+                        Grid::make()
                                 ->schema([
                                     Group::make([
                                         TextEntry::make('asset_number')
@@ -327,7 +325,6 @@ class DeviceResource extends Resource implements HasShieldPermissions
                                             ->label(__('cat/device.specification')),
                                     ]),
                                 ]),
-                        ]),
                     ]),
                 Section::make()->schema([
                     TextEntry::make('description')

@@ -8,7 +8,7 @@ use App\Services\TicketHasTrackService;
 use App\Utils\LogUtil;
 use App\Utils\NotificationUtil;
 use Exception;
-use Filament\Tables\Actions\Action;
+use Filament\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
 
 class TicketHasTrackAction
