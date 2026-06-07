@@ -32,6 +32,7 @@ return [
     'vendor_has_contact' => '供应商联系人',
     'asset_number_rule' => '资产编号规则',
     'import_log' => '导入日志',
+    'failed_import_row' => '失败导入行',
     'footprint' => '足迹',
     'user' => '用户',
     'role' => '角色',
