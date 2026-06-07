@@ -24,7 +24,7 @@ return [
     'super_admin' => [
         'enabled' => true,
         'name' => '超级管理员',
-        'define_via_gate' => false,
+        'define_via_gate' => true,
         'intercept_gate' => 'before',
     ],
 
